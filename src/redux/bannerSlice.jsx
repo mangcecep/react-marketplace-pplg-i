@@ -36,7 +36,7 @@ const getBanner = () => {
 const bannerReducer = (state = init, action) => {
     switch (action.type) {
         case "BANNER_INIT":
-            return { ...state }
+            return state
         case "BANNER_TO_CART":
             return {
                 ...state,
@@ -47,7 +47,6 @@ const bannerReducer = (state = init, action) => {
                 ...state,
                 load: false,
                 data: action?.payload?.data,
-                message: action?.payload?.message
             }
         case "BANNER_FETCH_FAIL":
             return {
@@ -56,7 +55,7 @@ const bannerReducer = (state = init, action) => {
                 error: action?.payload?.error
             }
         default:
-            return init
+            return state
     }
 }
 

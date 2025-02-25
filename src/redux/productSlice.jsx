@@ -47,7 +47,7 @@ const addToCart = (product, id) => {
 const productReducer = (state = productInit, action) => {
     switch (action.type) {
         case "PRODUCT_INIT":
-            return { ...state }
+            return state
         case "PRODUCT_TO_CART":
             return {
                 ...state,
@@ -58,7 +58,6 @@ const productReducer = (state = productInit, action) => {
                 ...state,
                 load: false,
                 data: action?.payload?.data,
-                message: action?.payload?.message
             }
         case "PRODUCT_FETCH_FAIL":
             return {
@@ -66,7 +65,7 @@ const productReducer = (state = productInit, action) => {
                 error: action?.payload?.error
             }
         default:
-            return productInit
+            return state
     }
 }
 
